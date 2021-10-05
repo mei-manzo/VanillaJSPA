@@ -1,29 +1,12 @@
-// // The Auth0 client, initialized in configureClient()
-let auth0 = null;
+//     audience: 'https://melandalin.us.auth0.com/api/v2/'
 
-// "domain": "melandalin.us.auth0.com",
-// "clientId": "uejGHfjRbCHNHgrQCBruC7L6CoknpcGA"
-
-//the start of our Auth0 token renewal code vvvv
-import createAuth0Client from '@auth0/auth0-spa-js';
-
-// either with async/await
-const auth0 = await createAuth0Client({
-  domain: 'melandalin.us.auth0.com',
-  client_id: 'uejGHfjRbCHNHgrQCBruC7L6CoknpcGA'
-});
-/////end of Auth0 renewal code^^^
-
-
+console.log("HIIIII");
 
 // /**
 //  * Executes the logout flow
 //  */
-const logout = () => {
-  auth0.logout({
-    returnTo: window.location.origin
-  });
-};
+// // The Auth0 client, initialized in configureClient()
+let auth0 = null;
 
 // /**
 //  * Retrieves the auth configuration from the server
@@ -41,25 +24,20 @@ const configureClient = async () => {
     domain: config.domain,
     client_id: config.clientId
   });
+
+
 };
 
-// /**
-//  * Checks to see if the user is authenticated. If so, `fn` is executed. Otherwise, the user
-//  * is prompted to log in
-//  * @param {*} fn The function to execute if the user is logged in
-//  */
-// const requireAuth = async (fn, targetUrl) => {
-//   const isAuthenticated = await auth0.isAuthenticated();
+//get raw token 
 
-//   if (isAuthenticated) {
-//     return fn();
-//   }
 
-//   return login(targetUrl);
-// };
 
 // // Will run when page finishes loading
-window.onload = async () => {
+
+////
+if (typeof window !== "undefined") {
+  // browser code
+  window.onload = async () => {
     await configureClient();
 
 //     // NEW - update the UI state
@@ -85,11 +63,35 @@ window.onload = async () => {
     }
 
 };
-  
+
+}
+
+
+const logout = () => {
+  auth0.logout({
+    returnTo: window.location.origin
+  });
+};
+
+
+const login = async () => {
+  await auth0.loginWithRedirect({
+    redirect_uri: window.location.origin
+  });
+};
+
+// const auth0 = await createAuth0Client({
+//   domain: 'melandalin.us.auth0.com',
+//   client_id: 'uejGHfjRbCHNHgrQCBruC7L6CoknpcGA',
+//   useRefreshTokens: true
+// });
+
+// Request a new access token using a refresh token
+
 //   // NEW
 const updateUI = async () => {
     const isAuthenticated = await auth0.isAuthenticated();
-  
+
     document.getElementById("btn-logout").disabled = !isAuthenticated;
     document.getElementById("btn-login").disabled = isAuthenticated;
   // NEW - add logic to show/hide gated content after authentication
@@ -98,8 +100,10 @@ const updateUI = async () => {
 
     document.getElementById(
       "ipt-access-token"
-    ).innerHTML = await auth0.getTokenSilently();
+    ).innerHTML = await auth0.getTokenSilently(); //this is calling our renewal tokens
 
+
+    
     document.getElementById("ipt-user-profile").textContent = JSON.stringify(
       await auth0.getUser()
     );
@@ -111,62 +115,38 @@ const updateUI = async () => {
 
 };
 
-//   // If unable to parse the history hash, default to the root URL
-// if (!showContentFromUrl(window.location.pathname)) {
-//     showContentFromUrl("/");
-//     window.history.replaceState({ url: "/" }, {}, "/");
-//   }
 
-// const bodyElement = document.getElementsByTagName("body")[0];
+const updateToken = async () => {
+  const claims = await auth0.getIdTokenClaims();
+  // if you need the raw id_token, you can access it
+  // using the __raw property
+  const id_token = claims.__raw;
+  return(JSON.stringify(id_token));
+}
 
-//   // Listen out for clicks on any hyperlink that navigates to a #/ URL
-// bodyElement.addEventListener("click", (e) => {
-//     if (isRouteLink(e.target)) {
-//       const url = e.target.getAttribute("href");
+console.log(updateToken);
+// console.log(getToken);
 
-//       if (showContentFromUrl(url)) {
-//         e.preventDefault();
-//         window.history.pushState({ url }, {}, url);
-//       }
-//     }
-//   });
+//trying to call the token
+// const token = auth0.getTokenSilently();
+// console.log(token);
 
-// const isAuthenticated = await auth0.isAuthenticated();
+//CALLING THE RULES DATA FROM MANAGEMENT API
 
-// if (isAuthenticated) {
-//     console.log("> User is authenticated");
-//     window.history.replaceState({}, document.title, window.location.pathname);
-//     updateUI();
-//     return;
-//   }
 
-// console.log("> User not authenticated");
+var axios = require("axios").default;
 
-// const query = window.location.search;
-// const shouldParseResult = query.includes("code=") && query.includes("state=");
+console.log("made it past....!");
 
-// if (shouldParseResult) {
-//     console.log("> Parsing redirect");
-//     try {
-//       const result = await auth0.handleRedirectCallback();
-
-//       if (result.appState && result.appState.targetUrl) {
-//         showContentFromUrl(result.appState.targetUrl);
-//       }
-
-//       console.log("Logged in!");
-//     } catch (err) {
-//       console.log("Error parsing redirect:", err);
-//     }
-
-//     window.history.replaceState({}, document.title, "/");
-//   }
-
-//   updateUI();
-// };
-
-const login = async () => {
-  await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin
-  });
+// NEED TO DEBUG BELOW
+var options = {
+  method: 'GET',
+  url: 'https://melandalin.us.auth0.com/api/v2/rules',
+  headers: {'content-type': 'application/json', authorization: 'Bearer Token'}
 };
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});
