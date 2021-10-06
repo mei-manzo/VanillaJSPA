@@ -4,9 +4,21 @@
     <meta charset="UTF-8" />
     <title>SPA SDK Sample</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script> <!--adding jquery scripting-->
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+    <script>
+      $('#getIdTokenClaims').click(async () => {
+        const claims = await auth0.getIdTokenClaims();
+        // if you need the raw id_token, you can access it
+        // using the __raw property
+        const id_token = claims.__raw;
+      });
+    </script>
   </head>
   <body>
     <h2>SPA Authentication Sample</h2>
+    
     <p>Welcome to our page!</p>
     <button id="btn-login" disabled="true" onclick="login()">Log in</button>
     <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>

@@ -16,9 +16,11 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.18.0",
     "axios": "^0.22.0",
+    "click": "^0.1.0",
     "console": "^0.7.2",
     "express": "^4.17.1",
     "helmet": "^3.23.3",
+    "jquery": "^3.6.0",
     "morgan": "^1.10.0"
   }
 }

@@ -88,8 +88,10 @@ const updateUI = async () => {
   console.log("UI updated");
 };
 
+// 
 window.onpopstate = (e) => {
   if (e.state && e.state.url && router[e.state.url]) {
     showContentFromUrl(e.state.url);
   }
 };
+
