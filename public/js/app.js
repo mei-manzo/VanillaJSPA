@@ -133,7 +133,7 @@ console.log("made it past....!");
 var options = {
   method: 'GET',
   url: 'https://melandalin.us.auth0.com/api/v2/rules',
-  headers: {'content-type': 'application/json', authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InB1WUxZejBSQjc5bG1oX1pUTHpsZSJ9.eyJpc3MiOiJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwZGU2ZTFjN2FlOWE2MDA2OWYyNGZmZSIsImF1ZCI6WyJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tL2FwaS92Mi8iLCJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTYzMzQ3ODI5NSwiZXhwIjoxNjMzNzc4Mjk1LCJhenAiOiJ1ZWpHSGZqUmJDSE5IZ3JRQ0JydUM3TDZDb2tucGNHQSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwifQ.Ll99XkE-xciotZ8wtHDkGT-Oltp6m02fgG6N4jFuDnKctBuQ4gjLzpEHX1-zc7Y6_koo80DFCwcSbmHQuHcESFT9Zg2I1HPxo44FaV585gZgXAoJ5mYFNFADe0haEYutulU5EC5pSokE_D6-wAP5FSgidBx1cVQCHwUBPycTUZKsUwclBwxPqf-eDaJzi1VvKEmtHM3RnRuxBmLtRCFnF9pPfnVhJFrjgoW23Ikgit0VpNcbuM6NNN_b28lSuloGhAFtrCzZJLDhdmDpMW2KvF4IiHXVQl3VgauYzEYqnFwzmaaknUrg6aTmBIFK6uSyYGiyLEVvhqJ_a2O2LUzdYg'}
+  headers: {'content-type': 'application/json', authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InB1WUxZejBSQjc5bG1oX1pUTHpsZSJ9.eyJpc3MiOiJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwZGU2ZTFjN2FlOWE2MDA2OWYyNGZmZSIsImF1ZCI6WyJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tL2FwaS92Mi8iLCJodHRwczovL21lbGFuZGFsaW4udXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTYzMzQ4MDkyMywiZXhwIjoxNjMzNzgwOTIzLCJhenAiOiJ1ZWpHSGZqUmJDSE5IZ3JRQ0JydUM3TDZDb2tucGNHQSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwifQ.C9g0oNPZFpC6jqXNYeMGTN6kmAtmyNZwRDAEa-EvEHWjjN7NQlXLt5wDZoBUUnT3onuqnkx0pvLCjYxDbnBZh5Vmz8bv1f1QwJ3c1bD0BUhHqghODrbiSu_mvleM1istxynPk6Dz2efofyP-u6yrs7WOeqgizfj1akEUe11McwJLHUwZ37-ShYWoZPpco_KfQwID_5NecoWy5M-zXTZ5i3kK2QlxYbCEcDwCuc6BKd-7T4je97ciON2ysEkn3rxtZMOBMHB3H6XlTwNUpDdSYTTDujG7U2XljH82mBmw9c_pdBsjqY6hkPHAiagdVL0nXaERAboSvkWGdNWkfmC-7A'}
 };
 
 axios.request(options).then(function (response) {
@@ -142,3 +142,17 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 
+// const STORAGE_TOKEN = 'storage_token';
+// @action
+// setSession(token: IStorageToken) {
+//   this.token = token;
+//   this.storage.setItem(STORAGE_TOKEN, JSON.stringify(token));
+// }
+
+// getAccessToken = () => {
+//   const accessToken = this.token.accessToken;
+//   if (!accessToken) {
+//     throw new Error('No access token found');
+//   }
+//   return accessToken;
+// };
