@@ -16,12 +16,17 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.18.0",
     "action": "^0.0.1",
+    "auth0": "^2.36.2",
     "axios": "^0.22.0",
     "click": "^0.1.0",
     "console": "^0.7.2",
     "express": "^4.17.1",
     "helmet": "^3.23.3",
     "jquery": "^3.6.0",
-    "morgan": "^1.10.0"
+    "lib": "^4.3.3",
+    "morgan": "^1.10.0",
+    "node-localstorage": "^2.2.1",
+    "node.js": "*",
+    "request": "^2.88.2"
   }
 }
