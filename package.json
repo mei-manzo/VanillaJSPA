@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.18.0",
+    "@react-native-async-storage/async-storage": "^1.15.9",
     "action": "^0.0.1",
+    "async": "^3.2.1",
+    "asyncstorage": "^1.5.0",
     "auth0": "^2.36.2",
     "axios": "^0.22.0",
     "click": "^0.1.0",
@@ -27,6 +30,10 @@
     "morgan": "^1.10.0",
     "node-localstorage": "^2.2.1",
     "node.js": "*",
-    "request": "^2.88.2"
+    "react-native": "^0.66.0",
+    "request": "^2.88.2",
+    "websocket": "^1.0.34",
+    "ws": "^8.2.3",
+    "xhr2": "^0.2.1"
   }
 }

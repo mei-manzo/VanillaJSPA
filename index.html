@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +19,6 @@
   </head>
   <body>
     <h2>SPA Authentication Sample</h2>
-
     <p>Welcome to our page!</p>
     <button id="btn-login" disabled="true" onclick="login()">Log in</button>
     <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
@@ -27,39 +27,14 @@
         You're seeing this content because you're currently
         <strong>logged in</strong>.
       </p>
-      <label>
-        Access token:
-        <pre id="ipt-access-token"></pre>
-      </label>
-      <label>
-        User profile:
-        <pre id="ipt-user-profile"></pre>
-      </label>
-
-      <script>
-        // const ws = new WebSocket("ws://localhost:8082");
-        // ws.addEventListener("open", e => {
-        //   ws.send(JSON.stringify({
-        //     x: 254,
-        //     y:100
-        //   }));
-        // });
-
-        // const WebSocket = require("ws"); 
-        // const wss = new WebSocket.Server({ port: 8082 });
-
-        ws.on("connection", wss => {
-            wss.on("message", message => {
-                console.log(JSON.parse(message)); //de encodes hex 
-                console.log("sent from server to html");
-
-        });
-        /// attempting to render data
-        document.getElementById("ipt-user-rules").textContent = JSON.stringify(
-                  hello
-                );
-            });
-      </script>
+            <label>
+              Access token:
+              <pre id="ipt-access-token"></pre>
+            </label>
+            <label>
+              User profile:
+              <pre id="ipt-user-profile"></pre>
+            </label>
             <label>
               Rules:
               <pre id="ipt-user-rules"></pre>
@@ -68,4 +43,5 @@
       <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
       <script src="js/app.js"></script>
   </body>
-</html>
+</html> 
+

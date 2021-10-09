@@ -41,12 +41,14 @@ function Auth0Manage(){
         }
     );
     
-    function getMyToken() {
-        return("connected");
-    }
 
     
 }
 
+
+function getMyToken() {
+    return("connected again");
+}
+
     
-module.exports = { Auth0Manage };
+// module.exports = { getMyToken };
