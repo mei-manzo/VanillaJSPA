@@ -8,28 +8,32 @@
     <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script> <!--adding jquery scripting-->
     <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
     <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
-    <script>
-      $('#getIdTokenClaims').click(async () => {
-        const claims = await auth0.getIdTokenClaims();
-        // if you need the raw id_token, you can access it
-        // using the __raw property
-        const id_token = claims.__raw;
-      });
+    <script type="text/javascript">
+      function show(){
+        document.getElementById("point").innerHTML = window.localStorage.getItem("Mei");
+      }
     </script>
+    <script LANGUAGE="JavaScript">
+      function save_data(){
+              // var firstn = document.getElementById("fn");
+              document.getElementById("fn").innerHTML = window.localStorage.getItem("Mei");  
+              }
+      </script> 
   </head>
   <body>
     <h2>SPA Authentication Sample</h2>
     <p>Welcome to our page!</p>
     <button id="btn-login" disabled="true" onclick="login()">Log in</button>
     <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
+    <button id="btn-fn" onclick="save_data()">fn</button>
     <div class="hidden" id="gated-content">
-      <p>
+      <p class="changeColor">
         You're seeing this content because you're currently
         <strong>logged in</strong>.
       </p>
             <label>
               Access token:
-              <pre id="ipt-access-token"></pre>
+              <pre id="ipt-access-token" ></pre>
             </label>
             <label>
               User profile:
@@ -39,6 +43,7 @@
               Rules:
               <pre id="ipt-user-rules"></pre>
             </label>
+            <p id="fn"></p>
     </div>
       <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
       <script src="js/app.js"></script>
